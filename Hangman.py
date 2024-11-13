@@ -1,15 +1,18 @@
 # Eingabe des geheimen Wortes
 secret_word = input("Enter a secret word: ").lower()
 # print(secret_word)
+from pandas import read_table
+
+pics = read_table("HANGMANPICS.txt")
 
 # Initialisierung des Resultats
 word_result = ["_"]*len(secret_word)
 letters_used = []
 calc_mistakes = 0
-max_mistakes = 8
+max_mistakes = 7
 print(word_result)
+pics_counter = 0
 
-# Komischerweise erfolgt die Ausgabe nicht gleich sofort bei Jupyter. Wenn ich dasselbe Skript in .py laufen lasse, dann erhalte ich nach jeder Buchstabeneingabe auch eine Rückmeldung.
 while calc_mistakes < max_mistakes:
     letter = input("Enter a letter: ").lower()
 
@@ -29,6 +32,8 @@ while calc_mistakes < max_mistakes:
     else:
         calc_mistakes += 1
         print(f"Falsch! Du hast noch {max_mistakes - calc_mistakes} versuche.")
+        print(pics.loc[pics_counter:pics_counter + 6])
+        pics_counter += 7
 
     if calc_mistakes == max_mistakes:
         print(f"Du hast verloren. Das geheime Wort war {secret_word}")
