@@ -36,7 +36,7 @@ while calc_mistakes < max_mistakes:
         pics_counter += 7
 
     if calc_mistakes == max_mistakes:
-        print(f"Du hast verloren. Das geheime Wort war {secret_word}")
+        print(f"Du hast verloren und baumelst am Galgen. Das geheime Wort war {secret_word}")
         break
 
     letters_used.append(letter)
